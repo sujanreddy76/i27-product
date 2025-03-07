@@ -18,7 +18,7 @@ COPY ["${JAR_SOURCE}", "/opt/i27/i27-product.jar"]
 RUN chmod 777 /opt/i27/
 
 #Expose Port 8761 to allow access to application
-EXPOSE 8232
+EXPOSE 8132
 
 #Run the process
 CMD ["java", "-jar", "/opt/i27/i27-product.jar"]
