@@ -1,0 +1,38 @@
+# Deployment yaml for deploying product micro-service in stg-ns(namespace)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: i27-product-stg
+  labels:
+    app: i27-product-stg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: i27-product-stg
+  template:
+    metadata:
+      labels:
+        app: i27-product-stg
+    spec:
+      containers:
+      - name: i27-product-stg
+        image: DIT #Image tag will be replaced by shared library
+---
+# Service yaml for product micro-service in stg-ns(namespace)
+apiVersion: v1
+kind: Service
+metadata:
+  name: i27-product-stg
+  labels:
+    app: i27-product-stg
+spec:
+  type: NodePort
+  selector:
+    app: i27-product-stg 
+  ports:
+  - port: 8132
+    targetPort: 8232
+      
+
+                  

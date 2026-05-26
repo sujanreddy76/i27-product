@@ -1,0 +1,38 @@
+# Deployment yaml for deploying product micro-service in dev-ns(namespace)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: i27-product-dev
+  labels:
+    app: i27-product-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: i27-product-dev
+  template:
+    metadata:
+      labels:
+        app: i27-product-dev
+    spec:
+      containers:
+      - name: i27-product-dev
+        image: DIT #Image tag will be replaced by shared library
+---
+# Service yaml for product micro-service in dev-ns(namespace)
+apiVersion: v1
+kind: Service
+metadata:
+  name: i27-product-dev
+  labels:
+    app: i27-product-dev
+spec:
+  type: NodePort
+  selector:
+    app: i27-product-dev 
+  ports:
+  - port: 8132
+    targetPort: 8132
+      
+
+                  
