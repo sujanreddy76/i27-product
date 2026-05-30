@@ -9,7 +9,7 @@ RUN mkdir -p /opt/i27/
 #Setting the work directory to /opt/i27
 WORKDIR /opt/i27
 
-#Define a buildtime variable called JAR_SOURCE to specify the path format
+#Define a buildtime variable called JAR_SOURCE to specify the path of .jar file
 ARG JAR_SOURCE
 
 COPY ["${JAR_SOURCE}", "/opt/i27/i27-product.jar"]
